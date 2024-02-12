@@ -17,3 +17,35 @@ This action facilitates code deployment using Rsync, providing a seamless method
 | `EXCLUDE_LIST`     | ".git/"       | Paths to exclude separated by `,`, ie: `.git/`         |
 | `DRY_RUN`          | "false"       | Run a trial without making any changes                 |
 
+# Usage
+
+```yaml
+name: Deploy Code
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Rsync Deployer
+        uses: imajeetyadav/rsync-deployer@1.0.0
+        with:
+          HOST: ${{ secrets.HOST }}
+          USERNAME: ${{ secrets.USERNAME }}
+          KEY: ${{ secrets.KEY }}
+          SOURCE_PATH: "."
+          TARGET_PATH: "/home/ubuntu/test/"
+          BACKUP_PATH: "/home/ubuntu/test-backup/"
+          PORT: 22
+          RSYNC_PARAMETERS: "" 
+          DELETE_OPTION: "false"
+          EXCLUDE_LIST: ".git, .github"
+          DRY_RUN: "false"
+```
