@@ -1,2 +1,2 @@
-# rsync-deployer
-Deploying code using Rsync
+# Rsync-deployer
+This action facilitates code deployment using Rsync, providing a seamless method to transfer files between hosts securely. It offers flexibility in specifying the source and target directories, along with optional features like backups, exclusion lists, and dry runs. With support for custom Rsync parameters, users can tailor the deployment process to suit their specific requirements.

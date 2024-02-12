@@ -1,0 +1,40 @@
+name: 'Rsync Deployer'
+description: 'Deploy code using Rsync'
+author: 'imajeetyadav'
+inputs:
+  KEY:
+    description: "Private key part of an SSH key pair"
+  HOST:
+    description: "Remote host"
+  USER:
+    description: "Remote user"
+  PORT:
+    description: "Remote port"
+    default: "22"
+  SOURCE_PATH:
+    description: "Source directory, path relative to `$GITHUB_WORKSPACE`"
+    default: ""
+  TARGET_PATH:
+    description: "Target directory"
+    default: ""
+  BACKUP_PATH:
+    description: "Backup directory (Optional)"
+    default: ""
+  RSYNC_PARAMETERS:
+    description: "Arguments to pass to rsync apart from -azh"
+    default: ""
+  DELETE_OPTION:
+    description: "Delete extraneous files"
+    default: "false"
+  EXCLUDE_LIST:
+    description: "Paths to exclude separated by `,`, ie: `.git/`"
+    default: ".git/"
+  DRY_RUN:
+    description: "Run a trial without making any changes"
+    default: "False"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'send'  
+  color: 'gray-dark'
