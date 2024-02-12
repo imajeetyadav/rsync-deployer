@@ -36,5 +36,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 branding:
-  icon: 'send'  
-  color: 'gray-dark'
+  icon: 'upload-cloud'  
+  color: 'green'
