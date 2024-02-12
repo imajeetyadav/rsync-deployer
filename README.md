@@ -7,7 +7,7 @@ This action facilitates code deployment using Rsync, providing a seamless method
 | ------------------ | ------------- | ------------------------------------------------------ |
 | `KEY`              |   required    | Private key part of an SSH key pair                    |
 | `HOST`             |   required    | Remote host                                            |
-| `USERNAME`         |   required    | Remote user                                            |
+| `USERNAME`         |   required    | Remote username                                        |
 | `PORT`             | "22"          | Remote port                                            |
 | `SOURCE_PATH`      | ""            | Source directory, path relative to `$GITHUB_WORKSPACE` |
 | `TARGET_PATH`      |   required    | Target directory                                       |
