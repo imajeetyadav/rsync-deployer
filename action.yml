@@ -31,7 +31,7 @@ inputs:
     default: ".git/"
   DRY_RUN:
     description: "Run a trial without making any changes"
-    default: "False"
+    default: "false"
 runs:
   using: 'docker'
   image: 'Dockerfile'
