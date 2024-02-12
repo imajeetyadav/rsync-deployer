@@ -6,7 +6,7 @@ inputs:
     description: "Private key part of an SSH key pair"
   HOST:
     description: "Remote host"
-  USER:
+  USERNAME:
     description: "Remote user"
   PORT:
     description: "Remote port"
