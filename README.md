@@ -10,7 +10,7 @@ This action facilitates code deployment using Rsync, providing a seamless method
 | `USERNAME`         |   required    | Remote user                                            |
 | `PORT`             | "22"          | Remote port                                            |
 | `SOURCE_PATH`      | ""            | Source directory, path relative to `$GITHUB_WORKSPACE` |
-| `TARGET_PATH`      | ""            | Target directory                                       |
+| `TARGET_PATH`      |   required    | Target directory                                       |
 | `BACKUP_PATH`      | ""            | Backup directory (Optional)                            |
 | `RSYNC_PARAMETERS` | ""            | Arguments to pass to rsync apart from -azh             |
 | `DELETE_OPTION`    | "false"       | Delete extraneous files                                |
