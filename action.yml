@@ -34,7 +34,7 @@ inputs:
     default: "false"
 runs:
   using: 'docker'
-  image: 'ghcr.io/imajeetyadav/rsync:1.0.0'
+  image: 'docker://ghcr.io/imajeetyadav/rsync:1.0.0'
 branding:
   icon: 'upload-cloud'  
   color: 'green'
