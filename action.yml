@@ -1,40 +1,97 @@
 name: 'Rsync Deployer'
-description: 'Deploy code using Rsync'
+description: 'Deploy files using rsync over SSH with detailed statistics and backup options'
 author: 'imajeetyadav'
+
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'
+
 inputs:
-  KEY:
-    description: "Private key part of an SSH key pair"
-  HOST:
-    description: "Remote host"
-  USERNAME:
-    description: "Remote user"
-  PORT:
-    description: "Remote port"
-    default: "22"
-  SOURCE_PATH:
-    description: "Source directory, path relative to `$GITHUB_WORKSPACE`"
-    default: ""
-  TARGET_PATH:
-    description: "Target directory"
-    default: ""
-  BACKUP_PATH:
-    description: "Backup directory (Optional)"
-    default: ""
-  RSYNC_PARAMETERS:
-    description: "Arguments to pass to rsync apart from -azh"
-    default: ""
-  DELETE_OPTION:
-    description: "Delete extraneous files"
-    default: "false"
-  EXCLUDE_LIST:
-    description: "Paths to exclude separated by `,`, ie: `.git/`"
-    default: ".git/"
-  DRY_RUN:
-    description: "Run a trial without making any changes"
-    default: "false"
+  host:
+    description: 'SSH host'
+    required: true
+  
+  username:
+    description: 'SSH username'
+    required: true
+  
+  key:
+    description: 'SSH private key'
+    required: true
+  
+  port:
+    description: 'SSH port'
+    required: false
+    default: '22'
+  
+  source_path:
+    description: 'Source path'
+    required: false
+    default: '.'
+  
+  target_path:
+    description: 'Target path on remote host'
+    required: true
+  
+  exclude_list:
+    description: 'List of files/directories to exclude (comma-separated)'
+    required: false
+    default: '.git/'
+  
+  rsync_parameters:
+    description: 'Additional rsync parameters'
+    required: false
+  
+  delete_option:
+    description: 'Delete extraneous files from destination dirs'
+    required: false
+    default: 'false'
+  
+  backup_path:
+    description: 'Backup directory path on remote host'
+    required: false
+  
+  dry_run:
+    description: 'Perform a trial run with no changes made'
+    required: false
+    default: 'false'
+  
+  print_summary:
+    description: 'Print deployment summary'
+    required: false
+    default: 'true'
+  
+  print_statistics:
+    description: 'Print deployment statistics'
+    required: false
+    default: 'true'
+  
+  print_rsync_logs:
+    description: 'Print rsync logs during execution'
+    required: false
+    default: 'true'
+  
+  debug:
+    description: 'Enable debug mode'
+    required: false
+    default: 'false'
+
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/imajeetyadav/rsync:1.0.0'
-branding:
-  icon: 'upload-cloud'  
-  color: 'green'
+  image: 'docker://ghcr.io/imajeetyadav/rsync:2.0.0'
+  env:
+    INPUT_HOST: ${{ inputs.host }}
+    INPUT_USERNAME: ${{ inputs.username }}
+    INPUT_KEY: ${{ inputs.key }}
+    INPUT_PORT: ${{ inputs.port }}
+    INPUT_SOURCE_PATH: ${{ inputs.source_path }}
+    INPUT_TARGET_PATH: ${{ inputs.target_path }}
+    INPUT_EXCLUDE_LIST: ${{ inputs.exclude_list }}
+    INPUT_RSYNC_PARAMETERS: ${{ inputs.rsync_parameters }}
+    INPUT_DELETE_OPTION: ${{ inputs.delete_option }}
+    INPUT_BACKUP_PATH: ${{ inputs.backup_path }}
+    INPUT_DRY_RUN: ${{ inputs.dry_run }}
+    INPUT_PRINT_SUMMARY: ${{ inputs.print_summary }}
+    INPUT_PRINT_STATISTICS: ${{ inputs.print_statistics }}
+    INPUT_PRINT_RSYNC_LOGS: ${{ inputs.print_rsync_logs }}
+    INPUT_DEBUG: ${{ inputs.debug }}
