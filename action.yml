@@ -78,7 +78,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/imajeetyadav/rsync:2.0.0'
+  image: 'docker://ghcr.io/imajeetyadav/rsync:2.0.1'
   env:
     INPUT_HOST: ${{ inputs.host }}
     INPUT_USERNAME: ${{ inputs.username }}
