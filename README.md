@@ -50,7 +50,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Deploy with Rsync
-        uses: imajeetyadav/rsync-deployer@2.0.0
+        uses: imajeetyadav/rsync-deployer@2.0.1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
